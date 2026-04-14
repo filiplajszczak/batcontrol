@@ -1,6 +1,6 @@
 """Pure Fronius GEN24 Modbus command building helpers."""
 
-from dataclasses import dataclass
+from .fronius_modbus_types import RegisterWrite
 
 REG_STORCTL_MOD = 40348
 REG_OUTWRTE = 40355
@@ -12,14 +12,6 @@ STORCTL_CHARGE_LIMIT = 1
 STORCTL_DISCHARGE_LIMIT = 2
 DEFAULT_RATE_SCALE_FACTOR = -2
 FULL_RATE_PERCENT = 10000
-
-
-@dataclass(frozen=True)
-class RegisterWrite:
-    """Single holding-register write."""
-
-    register: int
-    value: int
 
 
 def signed_to_unsigned_16(value: int) -> int:
